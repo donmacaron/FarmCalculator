@@ -1,0 +1,215 @@
+{% extends "elements/layout.html" %}
+
+{% block content %}
+<div class="container text-center">
+  <h2>Поступления</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <!-- colspan="2" -->
+        <th scope="col">Наименование корма</th>
+        <th scope="col">Кол-во корма (кг)</th>
+        <th scope="col">Дата перемещения</th>
+        <th scope="col">Кем перемещается</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Зеленый корм</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Корнеклубнеплодны</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Сено</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Веточный корм</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Концентрированный корм</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Минеральный корм</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container text-right">
+  <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">Изменить</button>
+  <br>
+  <!-- <a href="{{ url_for('change_password')}}"> Забыли пароль? </a> -->
+</div>
+
+
+
+
+<!-- MODAL -->
+<div class="modal fade container-fluid" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width: 750px;!important">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Изменить текущие значения</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="content-section">
+          <form class="form-text" method="post" action="">
+            <!--  -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <!-- colspan="2" -->
+                  <th scope="col">Наименование корма</th>
+                  <th scope="col">Кол-во корма (кг)</th>
+                  <th scope="col">Дата перемещения</th>
+                  <th scope="col">Кем перемещается</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Зеленый корм</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Корнеклубнеплодны</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Сено</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Веточный корм</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Концентрированный корм</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Минеральный корм</th>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!--  -->
+            <div class="form-group">
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                тут кнопка сабмит должна быть
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- LINK TO HOME -->
+  <a class="navbar-brand" href="{{ url_for('front_page') }}">
+    <img src="/static/nav_logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    Farm Calculator
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('home_page') }}">Главная<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- График заказов -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          График заказов
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('order_graph') }}">График заказов</a>
+          <a class="dropdown-item" href="{{ url_for('current_values') }}">Текущие значения</a>
+          <a class="dropdown-item" href="{{ url_for('receits') }}">Поступления</a>
+          <a class="dropdown-item" href="{{ url_for('transfers') }}">Перемещения</a>
+        </div>
+      </li>
+      <!-- График заказов -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Документы
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('docs') }}">Документы</a>
+          <a class="dropdown-item" href="{{ url_for('docs_receits') }}">Поступления</a>
+          <a class="dropdown-item" href="{{ url_for('docs_transfers') }}">Перемещения</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('register_page') }}">Регистрация</a>
+      </li>
+      <!-- Выход -->
+    </ul>
+    <a href="{{ url_for('logout_page') }}" class="btn btn-outline-secondary my-2 my-sm-0">Выход</a>
+
+  </div>
+</nav>
