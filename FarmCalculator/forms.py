@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError, Email
-from FarmCalculator.models import User
+from FarmCalculator.models import User, Feed, CurrentValues, Movement
 from FarmCalculator import db
 
 

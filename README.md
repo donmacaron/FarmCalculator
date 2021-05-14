@@ -1,4 +1,4 @@
-#**FarmCalculator**
+**FarmCalculator**
 
 Используемые фреймворки:
 -  Bootstrap
@@ -14,10 +14,11 @@
 
 
 Создание БД:
-1. Python Shell
-2. from FarmCalculator import db
-3. from Scheduler3K.models import User
-4. db.create_all()
+1. Python bd_reset.py
+
+Создание пользователя (тестовый режим):
+1. После запуска пройти по ссылке 127.0.0.1:5000/register и зарегистрировать пользователя.
+2. Войти
 
 
 FarmCalculator - пакет со всеми модулями.

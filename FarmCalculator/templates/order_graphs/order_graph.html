@@ -10,40 +10,14 @@
       <thead>
       </thead>
       <tbody>
+        {% for food in feed %}
         <tr>
-          <th scope="row">Зеленый корм</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">Корнеклубные плоды</th>
+          <th scope="row">{{food.name}}</th>
           <td></td>
           <td></td>
           <td></td>
         </tr>
-        <tr>
-          <th scope="row">Сено</th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">Веточный корм</th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">Концентрированный корм</th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">Минеральный корм</th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

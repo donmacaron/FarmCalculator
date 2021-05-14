@@ -11,18 +11,12 @@
       </tr>
     </thead>
     <tbody>
+      {% for val in cur_val %}
       <tr>
-        <th scope="row" colspan="2">Молодой</th>
-        <td>Jacob</td>
+        <th scope="row" colspan="2">{{ val.rabbit_type }}</th>
+        <td>{{ val.amount }}</td>
       </tr>
-      <tr>
-        <th scope="row" colspan="2">Взрослый</th>
-        <td>Jacob</td>
-      </tr>
-      <tr>
-        <th scope="row" colspan="2">Старый</th>
-        <td>Jacob</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>

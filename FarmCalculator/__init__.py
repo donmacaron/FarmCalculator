@@ -3,6 +3,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 
 UPLOADS_PATH = join(dirname(realpath(__file__)), 'static/files/')
 
@@ -13,6 +15,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = UPLOADS_PATH
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
 bcrypt = Bcrypt(app)
 
 login_manager = LoginManager(app)

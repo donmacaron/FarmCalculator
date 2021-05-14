@@ -1,9 +1,8 @@
 import os
 from flask import render_template, url_for, redirect, flash, request
 from flask_login import login_user, current_user, logout_user, login_required
-from werkzeug.utils import secure_filename
 from FarmCalculator import app, bcrypt, db
-from FarmCalculator.models import User
+from FarmCalculator.models import User, Feed, CurrentValues, Movement
 from FarmCalculator.forms import RegistrationForm, LoginForm
 
 show_diagrams = False
@@ -53,7 +52,9 @@ def change_password():
 @login_required
 def home_page():
     title = 'Farm Calculator - Главная'
-    return render_template('home.html', title=title)
+    feed = [item for item in Feed.query.all()]
+
+    return render_template('home.html', title=title, feed=feed)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -84,28 +85,33 @@ def logout_page():
 @login_required
 def order_graph():
     title = 'График заказов'
-    return render_template('order_graphs/order_graph.html', title=title)
+    feed = [item for item in Feed.query.all()]
+    return render_template('order_graphs/order_graph.html', title=title, feed=feed)
 
 
 @app.route('/current_values')
 @login_required
 def current_values():
     title = 'Текущие значения'
-    return render_template('order_graphs/current_values.html', title=title)
+    cur_val = [item for item in CurrentValues.query.all()]
+    return render_template('order_graphs/current_values.html', title=title, cur_val=cur_val)
 
 
 @app.route('/receits')
 @login_required
 def receits():
     title = 'Поступления'
-    return render_template('order_graphs/receits.html', title=title)
+    # feed = [item for item in Feed.query.all()]
+    movs = [item for item in Movement.query.all() if item.type == 'Receits']
+    return render_template('order_graphs/receits.html', title=title, movs=movs)
 
 
 @app.route('/transfers')
 @login_required
 def transfers():
     title = 'Перемещения'
-    return render_template('order_graphs/transfers.html', title=title)
+    movs = [item for item in Movement.query.all() if item.type == 'Transfer']
+    return render_template('order_graphs/transfers.html', title=title, movs=movs)
 
 
 @app.route('/docs')
