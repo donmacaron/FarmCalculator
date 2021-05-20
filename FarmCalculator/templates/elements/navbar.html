@@ -16,28 +16,14 @@
       <!-- График заказов -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          График заказов
+          Меню
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ url_for('order_graph') }}">График заказов</a>
           <a class="dropdown-item" href="{{ url_for('current_values') }}">Текущие значения</a>
-          <a class="dropdown-item" href="{{ url_for('receits') }}">Поступления</a>
-          <a class="dropdown-item" href="{{ url_for('transfers') }}">Перемещения</a>
-        </div>
-      </li>
-      <!-- График заказов -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Документы
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ url_for('docs') }}">Документы</a>
-          <a class="dropdown-item" href="{{ url_for('docs_receits') }}">Поступления</a>
-          <a class="dropdown-item" href="{{ url_for('docs_transfers') }}">Перемещения</a>
+          <a class="dropdown-item" href="{{ url_for('register_page') }}">Регистрация</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('register_page') }}">Регистрация</a>
       </li>
       <!-- Выход -->
     </ul>

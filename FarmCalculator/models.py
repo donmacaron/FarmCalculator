@@ -23,6 +23,8 @@ class Feed(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     amount = db.Column(db.Integer, nullable=False, default=0)
+    stocks = db.Column(db.Integer, nullable=False, default=0)
+    quarter = db.Column(db.Integer, nullable=False, default=0)
 
     def __repr__(self):
         return f"'{self.name}'"
@@ -46,7 +48,7 @@ class Movement(db.Model):
     provider = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return f"'{self.type}, {self.provider}, {self.feed_type}, {self.amount}'"
+        return f"'Тип: {self.type},\nПоставщик: {self.provider},\nТип Корма: {self.feed_type},\nСколько: {self.amount},\nКогда: {self.date}'"
 
 
 # class Group(db.Model):

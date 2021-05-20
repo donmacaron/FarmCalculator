@@ -1,13 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError, Email
 from FarmCalculator.models import User, Feed, CurrentValues, Movement
 from FarmCalculator import db
-
-
-# def group_list():
-#     return db.session.query(Group).all()
 
 
 class RegistrationForm(FlaskForm):
@@ -30,6 +26,21 @@ class LoginForm(FlaskForm):
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember = BooleanField('Оставаться в системе')
     submit = SubmitField('Вход')
+
+
+class CurrentValuesForm(FlaskForm):
+    young = IntegerField('Молодняк', validators=[DataRequired()])
+    adult = IntegerField('Взрослый', validators=[DataRequired()])
+    old = IntegerField('Старый', validators=[DataRequired()])
+    submit = SubmitField('Изменить')
+
+
+class MoveForm(FlaskForm):
+    feed_type = StringField('Тип корма', validators=[DataRequired()])
+    amount = IntegerField('Кол-во корма (кг)', validators=[DataRequired()])
+    date = DateField('Дата поступления')
+    provider = StringField('Поставщик', validators=[DataRequired()])
+    submit = SubmitField('Добавить')
 
 
 # class GroupForm(FlaskForm):
