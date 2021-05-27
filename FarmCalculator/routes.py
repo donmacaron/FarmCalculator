@@ -1,10 +1,10 @@
 # import os
-# import datetime
-from io import BytesIO
+import datetime
+# from io import BytesIO
 from PIL import Image
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+# from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-from flask import render_template, url_for, redirect, flash, request, send_file
+from flask import render_template, url_for, redirect, flash, request
 from flask_login import login_user, current_user, logout_user, login_required
 from FarmCalculator import app, bcrypt, db
 from FarmCalculator.models import User, Feed, CurrentValues, Movement
@@ -81,7 +81,8 @@ def logout_page():
 def order_graph():
     title = 'График заказов'
     feed = [item for item in Feed.query.all()]
-    return render_template('order_graphs/order_graph.html', title=title, feed=feed)
+    days = [datetime.date.today() + datetime.timedelta(days=item.stock - 3) for item in feed]
+    return render_template('order_graphs/order_graph.html', title=title, zip=zip(feed, days))
 
 
 @app.route('/current_values', methods=['GET', 'POST'])

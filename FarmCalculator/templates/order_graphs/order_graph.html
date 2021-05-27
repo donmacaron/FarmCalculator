@@ -8,14 +8,16 @@
   <div class="d-flex justify-content-center">
     <table class="table table-hover">
       <thead>
+        <tr>
+          <th scope="col">Наименование корма</th>
+          <th scope="col">Дата окончания запасов</th>
+        </tr>
       </thead>
       <tbody>
-        {% for food in feed %}
+        {% for food, day in zip %}
         <tr>
           <th scope="row">{{food.name}}</th>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{day}}</td>
         </tr>
         {% endfor %}
       </tbody>
