@@ -5,4 +5,3 @@ env/
 env*
 .vscode
 *.db*
-*graph.png
