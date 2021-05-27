@@ -23,7 +23,7 @@ class Feed(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=True, nullable=False)
     amount = db.Column(db.Integer, nullable=False, default=0)
-    stocks = db.Column(db.Integer, nullable=False, default=0)
+    stock = db.Column(db.Integer, nullable=False, default=0)
     quarter = db.Column(db.Integer, nullable=False, default=0)
 
     def __repr__(self):

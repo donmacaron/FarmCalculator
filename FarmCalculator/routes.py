@@ -1,6 +1,10 @@
-import os
-import datetime
-from flask import render_template, url_for, redirect, flash, request
+# import os
+# import datetime
+import io
+from PIL import Image
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+from flask import render_template, url_for, redirect, flash, request, Response
 from flask_login import login_user, current_user, logout_user, login_required
 from FarmCalculator import app, bcrypt, db
 from FarmCalculator.models import User, Feed, CurrentValues, Movement
@@ -55,6 +59,7 @@ def home_page():
     title = 'Farm Calculator - Главная'
     feed = [item for item in Feed.query.all()]
     calculate()
+    create_figure()
     return render_template('home.html', title=title, feed=feed)
 
 
@@ -159,8 +164,36 @@ def calculate():
         adult = CurrentValues.query.filter_by(rabbit_type='Взрослый').first().amount
         old = CurrentValues.query.filter_by(rabbit_type='Молодняк').first().amount
         f.amount = r - t
-        f.stock = f.amount / 1200
+        f.stock = int(f.amount / 1200)
         all_stock.append(f.stock)
     for f in Feed.query.all():
-        f.quarter = ((young+adult+old)*1.2*(91-sum(all_stock)))/6
+        f.quarter = int(((young+adult+old)*1.2*(91-f.stock)))
     db.session.commit()
+
+
+def create_figure():
+    fig = Figure()
+    axis = fig.add_subplot(2, 1, 1)
+    feed = Feed.query.all()
+    ys = [x.amount for x in feed]
+    xs = [x.name for x in feed]
+    axis.tick_params(axis='x', rotation=45)
+    axis.plot(xs, ys)
+    fig.savefig('FarmCalculator/static/graph.png')
+
+    img = Image.open('FarmCalculator/static/graph.png')
+    img = img.convert('RGBA')
+
+    datas = img.getdata()
+
+    newData = []
+    for item in datas:
+        if item[0] == 255 and item[1] == 255 and item[2] == 255:
+            newData.append((255, 255, 255, 0))
+        else:
+            newData.append(item)
+
+    img.putdata(newData)
+    img.save('FarmCalculator/static/graph.png', 'PNG')
+    print("Successful")
+    return fig
