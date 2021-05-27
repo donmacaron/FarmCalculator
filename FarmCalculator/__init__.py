@@ -12,6 +12,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f106a85651d73990e22af513b9dbfa24'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

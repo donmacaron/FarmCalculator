@@ -1,10 +1,10 @@
 # import os
 # import datetime
-import io
+from io import BytesIO
 from PIL import Image
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-from flask import render_template, url_for, redirect, flash, request, Response
+from flask import render_template, url_for, redirect, flash, request, send_file
 from flask_login import login_user, current_user, logout_user, login_required
 from FarmCalculator import app, bcrypt, db
 from FarmCalculator.models import User, Feed, CurrentValues, Movement
@@ -13,16 +13,6 @@ from FarmCalculator.forms import RegistrationForm, LoginForm, CurrentValuesForm,
 show_diagrams = False
 ALLOWED_EXTENSIONS = set(['pdf'])
 
-
-# Creating dict from db data
-# def show_groups():
-#     groups = [item.group_number for item in Group.query.all()]
-#     files = [item.file for item in Group.query.all()]
-#     print(groups)
-#     print(files)
-#     a = {item.group_number: item.file for item in Group.query.all()}
-#     print(a)
-#     return a
 
 @app.route('/', methods=['GET', 'POST'])
 def front_page():
@@ -175,7 +165,7 @@ def create_figure():
     fig = Figure()
     axis = fig.add_subplot(2, 1, 1)
     feed = Feed.query.all()
-    ys = [x.amount for x in feed]
+    ys = [x.stock for x in feed]
     xs = [x.name for x in feed]
     axis.tick_params(axis='x', rotation=45)
     axis.plot(xs, ys)
@@ -193,7 +183,11 @@ def create_figure():
         else:
             newData.append(item)
 
+    # img.putdata(newData)
+    # img_io = BytesIO()
+    # img.save(img_io, 'PNG')
+    # img_io.seek(0)
+    # return send_file(img_io, mimetype='image/png')
     img.putdata(newData)
     img.save('FarmCalculator/static/graph.png', 'PNG')
-    print("Successful")
-    return fig
+    # return img
